@@ -121,15 +121,26 @@ This repository comes with an example Apptainer "definition" file, `apptainer.de
 apptainer build project-container.sif apptainer.def 
 ```
 
-**Note**: you can replace `project-container` with any name you like.
+This will take a minute.
 
-Then,
+**Note**: you can replace `project-container` with any name you like. Also, the Sandbox will likely fuss about `fakeroot` not being available. This is okay.
+
+Then, to start an interactive R session from within the container:
 
 ```{bash}
-apptainer run project-container.sif
+apptainer shell project-container.sif
 R
 ```
 
 ```{r}
 install.packages(...)
 ```
+
+To run R scripts:
+
+```{bash}
+apptainer exec project-container.sif ./scripts/my_script.R
+```
+
+
+

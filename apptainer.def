@@ -18,4 +18,4 @@ From: rocker/rstudio:4.4.2
 
 %labels
     R_VERSION 4.4.2
-    MAINTAINER yourname
+    MAINTAINER ajbarrows
