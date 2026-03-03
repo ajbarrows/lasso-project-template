@@ -1,13 +1,21 @@
 Bootstrap: docker
-From: rocker/rstudio
+From: rocker/rstudio:4.4.2
 
 %post
-    # Install system dependencies (geospatial libs for sf, etc.)
-    apt-get update && apt-get install -y \
-        curl \
-        git \
-        libgdal-dev \
-        libproj-dev \
-        libgeos-dev \
-        libudunits2-dev \
-        && rm -rf /var/lib/apt/lists/*
+    # Install system dependencies
+    apt-get update -qq && apt-get install -y --no-install-recommends \
+        libxml2-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        libgit2-dev \
+        && apt-get clean
+
+    # Install renv
+    Rscript -e "install.packages('renv', repos='https://cloud.r-project.org')"
+
+%environment
+    export PATH=/usr/lib/rstudio-server/bin:$PATH
+
+%labels
+    R_VERSION 4.4.2
+    MAINTAINER yourname
