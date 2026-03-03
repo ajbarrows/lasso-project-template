@@ -123,7 +123,7 @@ apptainer build project-container.sif apptainer.def
 
 This will take a minute.
 
-**Note**: you can replace `project-container` with any name you like. Also, the Sandbox will likely fuss about `fakeroot` not being available. This is okay.
+**Note**: The Sandbox will likely fuss about `fakeroot` not being available (among other things). This is okay.
 
 Then, to start an interactive R session from within the container:
 
@@ -141,6 +141,22 @@ To run R scripts:
 ```{bash}
 apptainer exec project-container.sif ./scripts/my_script.R
 ```
+
+
+### (More) experimental
+
+You may wish to run RStudio from within this container. This container has an instance of RStudio Server -- a version of RStudio that you can access from a web browser -- installed and activated by default. 
+
+To start an RStudio Server session:
+
+```{bash}
+cd scripts
+bash ./start_rstudio.sh
+```
+
+A URL will appear. Ctl + Click on the URL (or copy and paste it into Google Chrome from within the Sandbox), and enter the displayed username and password.
+
+**Note** this script uses Singularity to start the RStudio Server instance because of some quirks I can't quite get to work using Apptainer. 
 
 
 
