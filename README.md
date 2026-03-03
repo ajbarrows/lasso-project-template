@@ -78,8 +78,19 @@ To create the link:
 ln -s `/shared/{dataset-of-my-choice}-{release-number}-release-tabulated-prod/` .
 ```
 
-Now, your project structure has changed slightly:
+Now, your project structure has changed slightly (ignoring hidden files):
 
+```
+.
+├── data
+│   ├── processed
+│   └── raw
+│       └── abcd-6-0-release-tabulated-prod
+├── notebooks
+├── R
+├── README.md
+└── scripts
+```
 
 
 Instead of reading your data from e.g., `/shared/abcd-6-0-release-tabulated-prod/`, you will now read it from `./data/raw/abcd-6-0-release-tabulated-prod`. 
@@ -90,10 +101,10 @@ As a concrete example, if you want to load the ABCD dynamic variables table (`ab
 fpath <- "./data/raw/abcd-6-0-release-tabulated-prod/ab_g_dyn.tsv"
 df <- read.table(fpath, sep = "\t")
 ```
-
 **Note**: This now a *relative* path. So, if you are working within the `/notebooks` directory, for example, your data path would need to "reach up" one level using `..`:
 
 ```{r}
 fpath <- "../data/raw/abcd-6-0-release-tabulated-prod/ab_g_dyn.tsv"
 df <- read.table(fpath, sep = "\t")
 ```
+
