@@ -1,6 +1,8 @@
 Bootstrap: docker
 From: rocker/rstudio:4.4.2
 
+%files
+    /shared
 %post
     # Install system dependencies
     apt-get update -qq && apt-get install -y --no-install-recommends \
