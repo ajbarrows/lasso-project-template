@@ -108,3 +108,28 @@ fpath <- "../data/raw/abcd-6-0-release-tabulated-prod/ab_g_dyn.tsv"
 df <- read.table(fpath, sep = "\t")
 ```
 
+
+## Manage your environment
+
+Since you're working with an externally-managed computational environment, you may encounter undesirable behaviors when installing R packages due to a lack of system-level dependencies. A commonly-accepted solution to this is [containerization](https://en.wikipedia.org/wiki/Containerization_(computing)). A fantastic group of people at the [Rocker Project](https://rocker-project.org) have created a collection of [Docker](https://www.docker.com) containers with clean installations of Ubuntu Linux and up-to-date versions of R already installed. 
+
+The container implementation that works on the LASSO Sandbox is [Apptainer](https://apptainer.org), which is meant to be fully compatible with Docker containers. These containers work by defining a source (the Rocker Project), and a destination where the container will be built. Then you will perform your analyses from within that container. 
+
+This repository comes with an example Apptainer "definition" file, `apptainer.def`. This definitions file installs necessary system libraries, an up-to-date version of R, and its own instance of RStudio (see below). To build it:
+
+```{bash}
+apptainer build apptainer.def project-container.def
+```
+
+**Note**: you can replace `project-container` with any name you like.
+
+Then,
+
+```{bash}
+apptainer run project-container.def
+R
+```
+
+```{r}
+install.packages(...)
+```
