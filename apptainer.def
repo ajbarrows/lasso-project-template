@@ -8,6 +8,7 @@ From: rocker/rstudio:4.4.2
         libcurl4-openssl-dev \
         libssl-dev \
         libgit2-dev \
+        libudunits2-dev \
         && apt-get clean
 
     # Install renv
