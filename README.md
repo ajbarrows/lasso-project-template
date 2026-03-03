@@ -118,7 +118,7 @@ The container implementation that works on the LASSO Sandbox is [Apptainer](http
 This repository comes with an example Apptainer "definition" file, `apptainer.def`. This definitions file installs necessary system libraries, an up-to-date version of R, and its own instance of RStudio (see below). To build it:
 
 ```{bash}
-apptainer build apptainer.def project-container.def
+apptainer build project-container.sif apptainer.def 
 ```
 
 **Note**: you can replace `project-container` with any name you like.
@@ -126,7 +126,7 @@ apptainer build apptainer.def project-container.def
 Then,
 
 ```{bash}
-apptainer run project-container.def
+apptainer run project-container.sif
 R
 ```
 
