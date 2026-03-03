@@ -17,6 +17,7 @@ singularity exec \
     --scratch /run,/var/lib/rstudio-server \
     --workdir "$WORKDIR" \
     --bind "$(pwd):/project" \
+    --bind /shared:/data/raw \
     --env PASSWORD=$PASSWORD \
     --env RS_INITIAL_PROJECT=/project/project.Rproj \
     "$SIF" \

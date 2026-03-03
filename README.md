@@ -75,7 +75,7 @@ respectively.
 To create the link:
 
 ```{bash}
-ln -s `/shared/{dataset-of-my-choice}-{release-number}-release-tabulated-prod/` .
+bash ./scripts/map_directory.sh
 ```
 
 Now, your project structure has changed slightly (ignoring hidden files):
@@ -86,6 +86,7 @@ Now, your project structure has changed slightly (ignoring hidden files):
 │   ├── processed
 │   └── raw
 │       └── abcd-6-0-release-tabulated-prod
+            ...
 ├── notebooks
 ├── R
 ├── README.md
@@ -125,10 +126,15 @@ This will take a minute.
 
 **Note**: The Sandbox will likely fuss about `fakeroot` not being available (among other things). This is okay.
 
-Then, to start an interactive R session from within the container:
+Then, to start a shell within the container:
 
 ```{bash}
-apptainer shell project-container.sif
+bash ./scripts/run_container.sh
+```
+
+To start an interactive R session:
+
+```{bash}
 R
 ```
 
@@ -139,7 +145,7 @@ install.packages(...)
 To run R scripts:
 
 ```{bash}
-apptainer exec project-container.sif ./scripts/my_script.R
+bash ./scripts/run_container.sh ./scripts/my_script.R
 ```
 
 
